@@ -64,3 +64,41 @@ Congruity Cones ask:
 ## License
 
 MIT — experimental, educational, and collaborative.
+
+## Quickstart
+
+### Install
+
+```bash
+pip install -e .
+
+Run CLI
+
+Compute Congruity Index (CI), Congruity Cone state, and the ex-ante gate decision.
+
+python -m src.cli --V 100 --E 20 --I 10 --S 5
+
+JSON output (machine-readable):
+
+python -m src.cli --V 100 --E 20 --I 10 --S 5 --json
+
+Tune Congruity Cone thresholds
+
+Adjust cone boundaries directly from the command line:
+
+python -m src.cli --V 100 --E 20 --I 10 --S 5 \
+  --allow_max_distance 0.35 --allow_max_volatility 0.35 \
+  --review_max_distance 0.65 --review_max_volatility 0.65 \
+  --block_distance 0.85
+
+Interpretation
+
+CI is a scalar compression of system efficiency.
+The Congruity Cone adds trajectory awareness via distance and volatility.
+The gate returns one of three states:
+
+ALLOW → admissible trajectory
+
+REVIEW → marginal / unstable region
+
+BLOCK → structurally inadmissible path
